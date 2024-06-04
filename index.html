@@ -326,29 +326,29 @@
 <p>这5个环境变量 都需要配置在: <code>/etc/profile</code>中<br>​</p>
 <p><img src="/2024/04/25/Spark%E9%83%A8%E7%BD%B2%E6%96%87%E6%A1%A3/md%E5%9B%BE/spark.assets/1.jpg"></p>
 <p>PYSPARK_PYTHON和 JAVA_HOME 需要同样配置在: <code>/root/.bashrc</code>中</p>
-<p><img src="/./md%E5%9B%BE/spark.assets/2.jpg"></p>
+<p><img src="/2024/04/25/Spark%E9%83%A8%E7%BD%B2%E6%96%87%E6%A1%A3/md%E5%9B%BE/spark.assets/2.jpg"></p>
 <h2 id="上传Spark安装包"><a href="#上传Spark安装包" class="headerlink" title="上传Spark安装包"></a>上传Spark安装包</h2><p>资料中提供了: <code>spark-3.2.0-bin-hadoop3.2.tgz</code></p>
 <p>上传这个文件到Linux服务器中</p>
 <p>将其解压, 课程中将其解压(安装)到: <code>/export/server</code>内.</p>
 <p><code>tar -zxvf spark-3.2.0-bin-hadoop3.2.tgz -C /export/server/</code></p>
 <p>由于spark目录名称很长, 给其一个软链接:</p>
 <p><code>ln -s /export/server/spark-3.2.0-bin-hadoop3.2 /export/server/spark</code><br>​</p>
-<p><img src="/./md%E5%9B%BE/spark.assets/3.jpg"><br><img src="/./md%E5%9B%BE/spark.assets/4.jpg"></p>
+<p><img src="/2024/04/25/Spark%E9%83%A8%E7%BD%B2%E6%96%87%E6%A1%A3/md%E5%9B%BE/spark.assets/3.jpg"><br><img src="/2024/04/25/Spark%E9%83%A8%E7%BD%B2%E6%96%87%E6%A1%A3/md%E5%9B%BE/spark.assets/4.jpg"></p>
 <h2 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h2><h3 id="bin-pyspark"><a href="#bin-pyspark" class="headerlink" title="bin&#x2F;pyspark"></a>bin&#x2F;pyspark</h3><p>bin&#x2F;pyspark 程序, 可以提供一个  <code>交互式</code>的 Python解释器环境, 在这里面可以写普通python代码, 以及spark代码<br>​</p>
-<p><img src="/./md%E5%9B%BE/spark.assets/5.jpg"></p>
+<p><img src="/2024/04/25/Spark%E9%83%A8%E7%BD%B2%E6%96%87%E6%A1%A3/md%E5%9B%BE/spark.assets/5.jpg"></p>
 <p>如图:</p>
-<p><img src="/./md%E5%9B%BE/spark.assets/6.jpg"></p>
+<p><img src="/2024/04/25/Spark%E9%83%A8%E7%BD%B2%E6%96%87%E6%A1%A3/md%E5%9B%BE/spark.assets/6.jpg"></p>
 <p>在这个环境内, 可以运行spark代码</p>
 <p>图中的: <code>parallelize</code> 和 <code>map</code> 都是spark提供的API</p>
 <p><code>sc.parallelize([1,2,3,4,5]).map(lambda x: x + 1).collect()</code><br>​</p>
 <h3 id="WEB-UI-4040"><a href="#WEB-UI-4040" class="headerlink" title="WEB UI (4040)"></a>WEB UI (4040)</h3><p>Spark程序在运行的时候, 会绑定到机器的<code>4040</code>端口上.</p>
-<p>如果4040端口被占用, 会顺延到4041 … 4042…<br><img src="/./md%E5%9B%BE/spark.assets/7.jpg"></p>
+<p>如果4040端口被占用, 会顺延到4041 … 4042…<br><img src="/2024/04/25/Spark%E9%83%A8%E7%BD%B2%E6%96%87%E6%A1%A3/md%E5%9B%BE/spark.assets/7.jpg"></p>
 <p>4040端口是一个WEBUI端口, 可以在浏览器内打开:</p>
-<p>输入:<code>服务器ip:4040</code> 即可打开:<br><img src="/./md%E5%9B%BE/spark.assets/8.jpg"></p>
+<p>输入:<code>服务器ip:4040</code> 即可打开:<br><img src="/2024/04/25/Spark%E9%83%A8%E7%BD%B2%E6%96%87%E6%A1%A3/md%E5%9B%BE/spark.assets/8.jpg"></p>
 <p>打开监控页面后, 可以发现 在程序内仅有一个Driver</p>
 <p>因为我们是Local模式, Driver即管理 又 干活.</p>
 <p>同时, 输入jps<br>​</p>
-<p><img src="/./md%E5%9B%BE/spark.assets/9.jpg"></p>
+<p><img src="/2024/04/25/Spark%E9%83%A8%E7%BD%B2%E6%96%87%E6%A1%A3/md%E5%9B%BE/spark.assets/9.jpg"></p>
 <p>可以看到local模式下的唯一进程存在</p>
 <p>这个进程 即是master也是worker</p>
 <h3 id="bin-spark-shell-了解"><a href="#bin-spark-shell-了解" class="headerlink" title="bin&#x2F;spark-shell - 了解"></a>bin&#x2F;spark-shell - 了解</h3><p>同样是一个解释器环境, 和<code>bin/pyspark</code>不同的是, 这个解释器环境 运行的不是python代码, 而是scala程序代码</p>
@@ -442,7 +442,7 @@
 
 <p>配置log4j.properties 文件 [可选配置]</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">1. 改名</span></span><br><span class="line">mv log4j.properties.template log4j.properties</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">2. 修改内容 参考下图</span></span><br></pre></td></tr></table></figure>
-<p><img src="/./md%E5%9B%BE/spark.assets/10.jpg"></p>
+<p><img src="/2024/04/25/Spark%E9%83%A8%E7%BD%B2%E6%96%87%E6%A1%A3/md%E5%9B%BE/spark.assets/10.jpg"></p>
 <blockquote>
 <p>这个文件的修改不是必须的,  为什么修改为WARN. 因为Spark是个话痨</p>
 <p>会疯狂输出日志, 设置级别为WARN 只输出警告和错误日志, 不要输出一堆废话.</p>
@@ -465,10 +465,10 @@
 <p>如果端口被占用, 会顺延到8081 …;8082… 8083… 直到申请到端口为止</p>
 <p>可以在日志中查看, 具体顺延到哪个端口上:</p>
 <p><code>Service &#39;MasterUI&#39; could not bind on port 8080. Attempting port 8081.</code><br>​</p>
-<p><img src="/./md%E5%9B%BE/spark.assets/11.jpg"></p>
+<p><img src="/2024/04/25/Spark%E9%83%A8%E7%BD%B2%E6%96%87%E6%A1%A3/md%E5%9B%BE/spark.assets/11.jpg"></p>
 <h3 id="连接到StandAlone集群"><a href="#连接到StandAlone集群" class="headerlink" title="连接到StandAlone集群"></a>连接到StandAlone集群</h3><h4 id="bin-pyspark-1"><a href="#bin-pyspark-1" class="headerlink" title="bin&#x2F;pyspark"></a>bin&#x2F;pyspark</h4><p>执行:</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">bin/pyspark --master spark://node1:7077</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">通过--master选项来连接到 StandAlone集群</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">如果不写--master选项, 默认是<span class="built_in">local</span>模式运行</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">sc.parallelize([1,2,3,4,5]).map(lambda x: x + 1).collect()</span><br></pre></td></tr></table></figure>
-<p><img src="/./md%E5%9B%BE/spark.assets/12.jpg"></p>
+<p><img src="/2024/04/25/Spark%E9%83%A8%E7%BD%B2%E6%96%87%E6%A1%A3/md%E5%9B%BE/spark.assets/12.jpg"></p>
 <h4 id="bin-spark-shell"><a href="#bin-spark-shell" class="headerlink" title="bin&#x2F;spark-shell"></a>bin&#x2F;spark-shell</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">bin/spark-shell --master spark://node1:7077</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">同样适用--master来连接到集群使用</span></span><br></pre></td></tr></table></figure>
 
 
@@ -480,7 +480,7 @@
 
 <h3 id="查看历史服务器WEB-UI"><a href="#查看历史服务器WEB-UI" class="headerlink" title="查看历史服务器WEB UI"></a>查看历史服务器WEB UI</h3><p>历史服务器的默认端口是: 18080</p>
 <p>我们启动在node1上, 可以在浏览器打开:</p>
-<p><code>node1:18080</code>来进入到历史服务器的WEB UI上.<br><img src="/./md%E5%9B%BE/spark.assets/13.jpg"></p>
+<p><code>node1:18080</code>来进入到历史服务器的WEB UI上.<br><img src="/2024/04/25/Spark%E9%83%A8%E7%BD%B2%E6%96%87%E6%A1%A3/md%E5%9B%BE/spark.assets/13.jpg"></p>
 <p>zookeeper</p>
 <h1 id="Spark-StandAlone-HA-环境搭建"><a href="#Spark-StandAlone-HA-环境搭建" class="headerlink" title="Spark StandAlone HA 环境搭建"></a>Spark StandAlone HA 环境搭建</h1><h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><blockquote>
 <p>前提: 确保Zookeeper 和 HDFS 均已经启动</p>
@@ -501,13 +501,13 @@
 
 <p>启动集群:</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">在node1上 启动一个master 和全部worker</span></span><br><span class="line">sbin/start-all.sh</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">注意, 下面命令在node2上执行</span></span><br><span class="line">sbin/start-master.sh</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">在node2上启动一个备用的master进程</span></span><br></pre></td></tr></table></figure>
-<p><img src="/./md%E5%9B%BE/spark.assets/14.jpg"><br><img src="/./md%E5%9B%BE/spark.assets/15.jpg"></p>
+<p><img src="/2024/04/25/Spark%E9%83%A8%E7%BD%B2%E6%96%87%E6%A1%A3/md%E5%9B%BE/spark.assets/14.jpg"><br><img src="/2024/04/25/Spark%E9%83%A8%E7%BD%B2%E6%96%87%E6%A1%A3/md%E5%9B%BE/spark.assets/15.jpg"></p>
 <h2 id="master主备切换"><a href="#master主备切换" class="headerlink" title="master主备切换"></a>master主备切换</h2><p>提交一个spark任务到当前<code>alive</code>master上:</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bin/spark-submit --master spark://node1:7077 /export/server/spark/examples/src/main/python/pi.py 1000</span><br></pre></td></tr></table></figure>
 
 
 <p>在提交成功后, 将alivemaster直接kill掉</p>
-<p>不会影响程序运行:<br><img src="/./md%E5%9B%BE/spark.assets/16.jpg"><br>当新的master接收集群后, 程序继续运行, 正常得到结果.</p>
+<p>不会影响程序运行:<br><img src="/2024/04/25/Spark%E9%83%A8%E7%BD%B2%E6%96%87%E6%A1%A3/md%E5%9B%BE/spark.assets/16.jpg"><br>当新的master接收集群后, 程序继续运行, 正常得到结果.</p>
 <blockquote>
 <p>结论 HA模式下, 主备切换 不会影响到正在运行的程序.</p>
 <p>最大的影响是 会让它中断大约30秒左右.</p>
@@ -537,8 +537,8 @@
 <h1 id="附1-Anaconda-On-Linux-安装-单台服务器"><a href="#附1-Anaconda-On-Linux-安装-单台服务器" class="headerlink" title="附1 Anaconda On Linux 安装 (单台服务器)"></a>附1 Anaconda On Linux 安装 (单台服务器)</h1><h2 id="安装-1"><a href="#安装-1" class="headerlink" title="安装"></a>安装</h2><p>上传安装包:</p>
 <p>上传: 资料中提供的<code>Anaconda3-2021.05-Linux-x86_64.sh</code>文件到Linux服务器上</p>
 <p>安装:</p>
-<p><code>sh ./Anaconda3-2021.05-Linux-x86_64.sh</code><br><img src="/./md%E5%9B%BE/spark.assets/17.jpg"><br><img src="/./md%E5%9B%BE/spark.assets/18.jpg"><br><img src="/./md%E5%9B%BE/spark.assets/19.jpg"><br><img src="/./md%E5%9B%BE/spark.assets/20.jpg"><br><img src="/./md%E5%9B%BE/spark.assets/21.jpg"><br>输入yes后就安装完成了.</p>
-<p>安装完成后, <code>退出finalshell 重新进来</code>:<br><img src="/./md%E5%9B%BE/spark.assets/22.jpg"></p>
+<p><code>sh ./Anaconda3-2021.05-Linux-x86_64.sh</code><br><img src="/2024/04/25/Spark%E9%83%A8%E7%BD%B2%E6%96%87%E6%A1%A3/md%E5%9B%BE/spark.assets/17.jpg"><br><img src="/2024/04/25/Spark%E9%83%A8%E7%BD%B2%E6%96%87%E6%A1%A3/md%E5%9B%BE/spark.assets/18.jpg"><br><img src="/2024/04/25/Spark%E9%83%A8%E7%BD%B2%E6%96%87%E6%A1%A3/md%E5%9B%BE/spark.assets/19.jpg"><br><img src="/2024/04/25/Spark%E9%83%A8%E7%BD%B2%E6%96%87%E6%A1%A3/md%E5%9B%BE/spark.assets/20.jpg"><br><img src="/2024/04/25/Spark%E9%83%A8%E7%BD%B2%E6%96%87%E6%A1%A3/md%E5%9B%BE/spark.assets/21.jpg"><br>输入yes后就安装完成了.</p>
+<p>安装完成后, <code>退出finalshell 重新进来</code>:<br><img src="/2024/04/25/Spark%E9%83%A8%E7%BD%B2%E6%96%87%E6%A1%A3/md%E5%9B%BE/spark.assets/22.jpg"></p>
 <p>看到这个Base开头表明安装好了.</p>
 <p>base是默认的虚拟环境.<br>​</p>
 <h2 id="国内源"><a href="#国内源" class="headerlink" title="国内源"></a>国内源</h2><p>如果你安装好后, 没有出现base, 可以打开:&#x2F;root&#x2F;.condarc这个文件, 追加如下内容:</p>
@@ -561,9 +561,9 @@
 
 
 <h1 id="附3-Windows系统配置Anaconda"><a href="#附3-Windows系统配置Anaconda" class="headerlink" title="附3 Windows系统配置Anaconda"></a>附3 Windows系统配置Anaconda</h1><h2 id="安装-2"><a href="#安装-2" class="headerlink" title="安装"></a>安装</h2><p>打开资料中提供的:Anaconda3-2021.05-Windows-x86_64.exe文件,或者去官网下载:[<a target="_blank" rel="noopener" href="https://www.anaconda.com/products/individual#Downloads]">https://www.anaconda.com/products/individual#Downloads]</a><br>​</p>
-<p>打开后,一直点击<code>Next</code>下一步即可:<br><img src="/./md%E5%9B%BE/spark.assets/23.jpg" alt="image.png"><br><img src="/./md%E5%9B%BE/spark.assets/24.jpg" alt="image.png"><br>如果想要修改安装路径, 可以修改<br><img src="/./md%E5%9B%BE/spark.assets/25.jpg" alt="image.png"><br>不必勾选<br><img src="/./md%E5%9B%BE/spark.assets/26.jpg" alt="image.png"><br>最终点击Finish完成安装</p>
-<p>打开开始菜单, 搜索Anaconda<br><img src="/./md%E5%9B%BE/spark.assets/27.jpg" alt="image.png"><br>出现如图的程序, 安装成功.</p>
-<p>打开 <code>Anaconda Prompt</code>程序:<br><img src="/./md%E5%9B%BE/spark.assets/28.jpg" alt="image.png"><br>出现<code>base</code>说明安装正确.</p>
+<p>打开后,一直点击<code>Next</code>下一步即可:<br><img src="/2024/04/25/Spark%E9%83%A8%E7%BD%B2%E6%96%87%E6%A1%A3/md%E5%9B%BE/spark.assets/23.jpg" alt="image.png"><br><img src="/2024/04/25/Spark%E9%83%A8%E7%BD%B2%E6%96%87%E6%A1%A3/md%E5%9B%BE/spark.assets/24.jpg" alt="image.png"><br>如果想要修改安装路径, 可以修改<br><img src="/2024/04/25/Spark%E9%83%A8%E7%BD%B2%E6%96%87%E6%A1%A3/md%E5%9B%BE/spark.assets/25.jpg" alt="image.png"><br>不必勾选<br><img src="/2024/04/25/Spark%E9%83%A8%E7%BD%B2%E6%96%87%E6%A1%A3/md%E5%9B%BE/spark.assets/26.jpg" alt="image.png"><br>最终点击Finish完成安装</p>
+<p>打开开始菜单, 搜索Anaconda<br><img src="/2024/04/25/Spark%E9%83%A8%E7%BD%B2%E6%96%87%E6%A1%A3/md%E5%9B%BE/spark.assets/27.jpg" alt="image.png"><br>出现如图的程序, 安装成功.</p>
+<p>打开 <code>Anaconda Prompt</code>程序:<br><img src="/2024/04/25/Spark%E9%83%A8%E7%BD%B2%E6%96%87%E6%A1%A3/md%E5%9B%BE/spark.assets/28.jpg" alt="image.png"><br>出现<code>base</code>说明安装正确.</p>
 <h2 id="配置国内源"><a href="#配置国内源" class="headerlink" title="配置国内源"></a>配置国内源</h2><p>Anaconda默认源服务器在国外, 网速比较慢, 配置国内源加速网络下载.<br>​</p>
 <p>打开上图中的 <code>Anaconda Prompt</code>程序:<br>执行:<br><code>conda config --set show_channel_urls yes</code><br>​</p>
 <p>然后用记事本打开:<br><code>C:\Users\用户名\.condarc</code>文件, 将如下内容替换进文件内,保存即可:</p>
